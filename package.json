@@ -2,8 +2,9 @@
   "name": "ueetestproject",
   "version": "0.0.1",
   "description": "Test project for UEE",
-  "source": "src/index.html",
+  "source": "src/client/index.html",
   "scripts": {
+    "server": "node ./src/server/server.js",
     "start": "parcel",
     "build": "parcel build"
   },
@@ -18,9 +19,12 @@
   },
   "homepage": "https://github.com/ellementul/UEETestProject#readme",
   "dependencies": {
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1",
     "uee": "github:ellementul/UEE"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "parcel": "^2.3.2"
   }
 }
