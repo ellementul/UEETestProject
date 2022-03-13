@@ -5,30 +5,32 @@ let timerHandler
 class Ticker extends Module {
   constructor () {
     super()
-    this.delta = 1000
+    this.delta = 100
     this.count = 0
+    this.factor = 10
+    this.bigCount= 0
   }
   defEvents () { return [{ name: "tick" }] }
 
-  sendTick () {
+  increaseCount () {
     this.count++
-    this.sendEvent({ name: 'tick', payload: { count: this.count } })
-    timerHandler = setTimeout(this.sendTick.bind(this), this.delta)
+    if(this.count % this.factor === 0)
+      this.bigCount++
   }
 
-  sleep () {
-    clearTimeout(timerHandler)
-    timerHandler = setTimeout(this.sendTick.bind(this), this.delta * 2)
+  sendTick () {
+    this.increaseCount()
+    this.sendEvent({ name: 'tick', payload: { count: this.count, bigCount: this.bigCount } })
   }
 
   run () {
-    timerHandler = setTimeout(this.sendTick.bind(this), this.delta)
+    setTimeout(() => setInterval(this.sendTick.bind(this), this.delta), this.factor * this.delta)
   }
 
   tick (payload) {
     if (payload.count > this.count) {
       this.count = payload.count
-      this.sleep()
+      
     }
   }
 }

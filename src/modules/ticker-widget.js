@@ -1,16 +1,33 @@
 import { Module } from 'uee'
 
 class TickerWidget extends Module {
+
+  constructor () {
+    super()
+
+    this.ticks = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  }
+
   defEvents () {
     return [{ name: 'tick' }]
   }
 
   run () {
-    document.body.innerHTML += 'Runnig widget: <br>'
+    document.getElementById("headticker").innerHTML = 'Runnig widget:'
   }
 
-  tick (payload) {
-    document.body.innerHTML += `Tick: ${payload.count}<br>`
+  tick ({ count, bigCount }) {
+    this.ticks.unshift(count)
+    this.ticks.unshift(bigCount)
+    this.ticks.pop()
+    this.ticks.pop()
+    console.log(this.ticks)
+    this.drawTicks()
+  }
+
+  drawTicks () {
+    const ticks = this.ticks.join("<br>")
+    document.getElementById("ticks").innerHTML = `Ticks: <br> ${ticks}`
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "ueetestproject",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Test project for UEE",
   "source": "src/client/index.html",
   "scripts": {
