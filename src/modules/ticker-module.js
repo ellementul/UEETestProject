@@ -14,8 +14,11 @@ class Ticker extends Module {
 
   increaseCount () {
     this.count++
-    if(this.count % this.factor === 0)
+    
+    if(this.count % this.factor === 0) {
       this.bigCount++
+      this.count = 0
+    }
   }
 
   sendTick () {

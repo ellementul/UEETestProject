@@ -19,7 +19,6 @@ class TickerWidget extends Module {
   tick ({ count, bigCount }) {
     this.ticks.unshift(bigCount)
     this.ticks.pop()
-    console.log(this.ticks)
     this.drawTicks()
   }
 
