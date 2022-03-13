@@ -3,8 +3,10 @@
   "version": "0.0.3",
   "description": "Test project for UEE",
   "source": "src/client/index.html",
+  "type": "module",
   "scripts": {
     "server": "node ./src/server/server.js",
+    "server-env": "node ./src/client/serverEnvironment.js",
     "start": "parcel",
     "build": "parcel build"
   },

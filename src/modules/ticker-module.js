@@ -27,10 +27,10 @@ class Ticker extends Module {
     setTimeout(() => setInterval(this.sendTick.bind(this), this.delta), this.factor * this.delta)
   }
 
-  tick (payload) {
-    if (payload.count > this.count) {
-      this.count = payload.count
-      
+  tick ({ count, bigCount}) {
+    if (count > this.count) {
+      this.count = count
+      this.bigCount = bigCount
     }
   }
 }
