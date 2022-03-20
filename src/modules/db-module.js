@@ -1,24 +1,33 @@
 import { Module } from 'uee'
-
-const NeDB = require('nedb')
+import NeDB from 'nedb'
 
 
 class DB extends Module {
-  constructor () {
-    super()
+  constructor (env = {}) {
+    super(env)
     this.serverTime = 0
-    this.db = new NeDB()
+    this.dbPath = env.dbPath
   }
   defEvents () { return [{ name: "tick" }] }
 
   run () {
-    
+    this.db = new NeDB({ filename: this.dbPath, autoload: true })
+    this.db.findOne({ entity: "server-time" }, (error, doc) => {
+      if(error)
+        throw error
+
+      if(doc)
+        this.serverTime = doc.serverTime
+    });
   }
 
   tick ({ bigCount }) {
-    if (bigCount < this.serverTime) {
+    if (bigCount > this.serverTime) {
       this.serverTime = bigCount
-      db.insert({ entity: "server-time", serverTime: this.serverTime })
+      this.db.update({ entity: "server-time" }, { $set: { serverTime: this.serverTime } }, { upsert: true }, error => {
+        if(error)
+          throw error
+      })
     }
   }
 }

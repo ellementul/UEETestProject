@@ -4,6 +4,6 @@ import TickerWidget from '../modules/ticker-widget'
 
 new UEE({
   transport: new SoketIOTransport,
-  modules: [TickerWidget],
+  modules: [new TickerWidget],
   isRun: true,
 })

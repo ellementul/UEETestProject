@@ -1,4 +1,5 @@
-const { Server } = require("socket.io");
+import { Server } from "socket.io"
+
 const io = new Server(null, {
   cors: {  origin: "http://localhost:1234"  }
 });
