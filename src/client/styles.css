@@ -2,3 +2,43 @@ h1 {
   color: hotpink;
   font-family: cursive;
 }
+
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.game-window {
+  position: relative;
+}
+
+.game-camera {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -1;
+
+  overflow: hidden;
+}
+
+.game-ui {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.right-panel {
+  position: relative;
+  float: right;
+  right: 1em;
+}

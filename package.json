@@ -7,8 +7,7 @@
   "scripts": {
     "server": "node ./src/server/server.js",
     "server-env": "node ./src/client/serverEnvironment.js",
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "parcel build && parcel"
   },
   "repository": {
     "type": "git",
