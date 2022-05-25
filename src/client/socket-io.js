@@ -4,7 +4,7 @@ import { AbstractTransport } from "uee"
 class SocketIOTransport extends AbstractTransport {
   constructor () {
     super();
-    this.socket = io("http://localhost:3000")
+    this.socket = io(`http://localhost:${process.env.SERVER_UEE_PORT}`)
     this.send = this.send.bind(this)
     this.onRecieve = this.onRecieve.bind(this)
   }

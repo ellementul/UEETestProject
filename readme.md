@@ -1,7 +1,6 @@
 # UEE Test Project
 ### Chat
-1. Resolve problems statics files
-2. Create state module, State module send message "Update State of Module", "Load State of Module"
+1. Create state module, State module send message "Update State of Module", "Load State of Module"
 3. Create history module, get state and compare old state
 4. History module send event "Save DB object", write object name in const entity 
 5.  History module get message "Load State of Module" and send "Get DB Object", write object name in const entity 

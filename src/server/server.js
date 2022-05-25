@@ -10,6 +10,6 @@ io.on('connection', (socket) => {
   })
 });
 
-io.listen(3000, () => {  
-  console.log('listening on *:3000');
+io.listen(process.env.SERVER_UEE_PORT || 3001, () => { 
+  console.log(`listening on *:${process.env.SERVER_UEE_PORT || 3001}`);
 });
